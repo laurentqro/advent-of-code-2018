@@ -4,6 +4,9 @@
   :license {:name "MIT"
             :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.8.0"]]
-  :main ^:skip-aot advent-of-code-2018.core
+  :main advent-of-code-2018.core
+  :aot [advent-of-code-2018.core]
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:dev {:dependencies [[speclj "3.3.2"]]}}
+  :plugins [[speclj "3.3.2"]]
+  :test-paths ["spec"])
