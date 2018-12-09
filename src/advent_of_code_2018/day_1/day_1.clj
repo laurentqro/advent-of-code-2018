@@ -15,3 +15,4 @@
        (map #(Integer/parseInt %))
        (sum)))
 
+(defn reached-twice-frequency [frequencies])
