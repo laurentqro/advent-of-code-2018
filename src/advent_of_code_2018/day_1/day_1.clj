@@ -6,13 +6,10 @@
 (defn- text->array [input]
   (clojure.string/split input #"\n"))
 
-(defn- sum [numbers]
-  (apply + numbers))
-
-(defn resulting-frequency []
+(defn- frequency-changes [input]
   (->> input
        (text->array)
-       (map #(Integer/parseInt %))
-       (sum)))
+       (map #(Integer/parseInt %))))
 
-(defn reached-twice-frequency [frequencies])
+(defn resulting-frequency [changes]
+  (apply + changes))
