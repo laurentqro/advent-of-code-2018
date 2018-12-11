@@ -13,3 +13,11 @@
 
 (defn resulting-frequency [changes]
   (apply + changes))
+
+(defn reached-twice-frequency [frequencies]
+  (reduce (fn [seen-freqs new-freq]
+            (if (contains? seen-freqs new-freq)
+              (reduced new-freq)
+              (conj seen-freqs new-freq)))
+          #{0}
+          (reductions + (cycle frequencies))))
