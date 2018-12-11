@@ -1,14 +1,15 @@
 (ns advent-of-code-2018.aoc-spec
   (:require [speclj.core :refer :all]
-            [advent-of-code-2018.day-1.day-1 :refer :all]))
+            [advent-of-code-2018.day-1 :refer :all]
+            [advent-of-code-2018.day-2 :refer :all]))
 
-(describe "Day1 part 1"
+(describe "Day 1 part 1"
           (it "Current frequency  0, change of +1 -2 +3 +1; resulting frequency 3"
               (let [frequency-changes [1 -2 3 1]]
                 (should= 3
                          (resulting-frequency frequency-changes)))))
 
-(describe "Day1 part 2"
+(describe "Day 1 part 2"
           (it "+1, -1 first reaches 0 twice"
               (let [frequencies [1 -1]]
                 (should= 0
@@ -28,3 +29,30 @@
               (let [frequencies [7 7 -2 -7 -4]]
                 (should= 14
                          (reached-twice-frequency frequencies)))))
+
+(describe "Day 2 part 1"
+          (it "determines an ID contains two same letters"
+              (let [id "aabcd"]
+                (should= true (has-n-identical-letters? id 2))))
+
+          (it "determines an ID does not contain two same letters"
+              (let [id "abcd"]
+                (should= false (has-n-identical-letters? id 2))))
+
+          (it "determines an ID contains three same letters"
+              (let [id "aaabcd"]
+                (should= true (has-n-identical-letters? id 3))))
+
+          (it "determines an ID does not contain three same letters"
+              (let [id "abcd"]
+                (should= false (has-n-identical-letters? id 3))))
+
+          (it "selects the IDs with two identical letters"
+              (let [ids ["aabcd" "abcd"]]
+                (should= ["aabcd"]
+                         (two-letter-ids ids))))
+
+          (it "selects the IDs with three identical letters"
+              (let [ids ["abbbcd" "abcd"]]
+                (should= ["abbbcd"]
+                         (three-letter-ids ids)))))
